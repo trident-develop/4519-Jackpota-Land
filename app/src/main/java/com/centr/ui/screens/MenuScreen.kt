@@ -208,7 +208,8 @@ fun MenuScreenContent(
                     fontSize = 16.sp,
                     onClick = onPrivacy,
                     modifier = Modifier
-                        .width(100.dp).height(46.dp)
+                        .width(100.dp)
+                        .height(46.dp)
                 )
 
                 Box(
@@ -327,7 +328,8 @@ private fun FlyingCoinAnimation(
     }
 
     val currentX = startXPx + (targetXPx - startXPx) * t
-    val currentY = startYPx + (targetYPx - startYPx) * t - 80f * kotlin.math.sin(t * Math.PI.toFloat())
+    val currentY =
+        startYPx + (targetYPx - startYPx) * t - 80f * kotlin.math.sin(t * Math.PI.toFloat())
 
     val sizeDp = with(density) { 20.dp }
     val offsetX = with(density) { currentX.toInt().toDp() }
@@ -383,7 +385,7 @@ private fun DailyBonusPanel(
                     val isCurrent = day == currentDay + 1
                     val amount = getDailyBonusAmount(day)
 
-                    Row (
+                    Row(
                         verticalAlignment = Alignment.CenterVertically,
                         horizontalArrangement = Arrangement.spacedBy(2.dp),
                         modifier = Modifier
@@ -397,7 +399,11 @@ private fun DailyBonusPanel(
                                 }
                             )
                             .then(
-                                if (isCurrent) Modifier.border(1.dp, GoldYellow, RoundedCornerShape(6.dp))
+                                if (isCurrent) Modifier.border(
+                                    1.dp,
+                                    GoldYellow,
+                                    RoundedCornerShape(6.dp)
+                                )
                                 else Modifier
                             )
                             .padding(vertical = 4.dp, horizontal = 2.dp)
@@ -433,7 +439,9 @@ private fun DailyBonusPanel(
             MenuButton(
                 text = "COLLECT",
                 fontSize = 14.sp,
-                modifier = Modifier.width(80.dp).height(36.dp),
+                modifier = Modifier
+                    .width(80.dp)
+                    .height(36.dp),
                 onClick = onClaim,
             )
         } else {
@@ -465,9 +473,9 @@ private fun TopBar(
         // Coins
         Row(
             modifier = Modifier
-            .clip(RoundedCornerShape(12.dp))
-            .background(Color.Black.copy(alpha = 0.85f))
-            .border(1.dp, GoldYellow.copy(alpha = 0.4f), RoundedCornerShape(12.dp)),
+                .clip(RoundedCornerShape(12.dp))
+                .background(Color.Black.copy(alpha = 0.85f))
+                .border(1.dp, GoldYellow.copy(alpha = 0.4f), RoundedCornerShape(12.dp)),
             verticalAlignment = Alignment.CenterVertically
         ) {
             Image(
@@ -604,8 +612,12 @@ private fun GameCard(
                     buttonRes = theme.buttonRes,
                     modifier = Modifier
                         .align(Alignment.BottomCenter)
-                        .width(160.dp).height(60.dp)
-                        .padding(horizontal = 16.dp, vertical = 8.dp),
+                        .width(160.dp)
+                        .height(if (theme.displayName == "Pirate") 64.dp else 60.dp)
+                        .padding(
+                            horizontal = 16.dp,
+                            vertical = if (theme.displayName == "Pirate") 4.dp else 8.dp
+                        ),
                     onClick = onPlay
                 )
             } else {
