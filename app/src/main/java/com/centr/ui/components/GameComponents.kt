@@ -144,7 +144,7 @@ fun RoyalLeftColumn(
         ) {
             Spacer(modifier = Modifier.width(6.dp))
             Image(
-                painter = painterResource(id = R.drawable.coin),
+                painter = painterResource(id = R.drawable.lion_element_8),
                 contentDescription = null, modifier = Modifier.size(24.dp)
             )
             Spacer(modifier = Modifier.width(4.dp))
@@ -583,7 +583,7 @@ fun GameTopBar(
             ) {
                 Spacer(modifier = Modifier.width(6.dp))
                 Image(
-                    painter = painterResource(id = R.drawable.coin),
+                    painter = painterResource(id = R.drawable.lion_element_8),
                     contentDescription = null, modifier = Modifier.size(24.dp)
                 )
                 Spacer(modifier = Modifier.width(4.dp))
@@ -739,7 +739,7 @@ fun GameBottomBar(
                 }
             ) {
                 Text(
-                    text = "BET",
+                    text = "PLAY",
                     color = Color.White,
                     fontSize = 11.sp,
                     fontFamily = CasinoFont,
