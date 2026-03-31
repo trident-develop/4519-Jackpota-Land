@@ -7,6 +7,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
+import com.centr.viewmodel.Vasddf
+import com.centr.viewmodel.model.newPost
 import com.centr.navigation.LoadingGraph
 
 class LoadingActivity : ComponentActivity() {
@@ -19,8 +21,13 @@ class LoadingActivity : ComponentActivity() {
             WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
         controller?.hide(WindowInsetsCompat.Type.systemBars())
         enableEdgeToEdge()
+        val factory = Vasddf(this)
+        newPost(intent)
         setContent {
-            LoadingGraph()
+            LoadingGraph(
+                this@LoadingActivity,
+                factory
+            )
         }
     }
 }

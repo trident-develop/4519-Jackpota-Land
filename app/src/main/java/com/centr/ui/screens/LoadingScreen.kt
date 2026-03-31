@@ -1,5 +1,6 @@
 package com.centr.ui.screens
 
+import androidx.activity.ComponentActivity
 import androidx.activity.compose.BackHandler
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.LinearEasing
@@ -53,13 +54,20 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.centr.R
+import com.centr.viewmodel.Vasddf
+import com.centr.navigation.NavigationStore.navigate
+import com.centr.navigation.ScreenMove
+import com.centr.sound.masdf
 import kotlinx.coroutines.delay
 import kotlin.math.PI
 import kotlin.math.cos
 import kotlin.math.sin
 
 @Composable
-fun LoadingScreen(onLoadingComplete: () -> Unit) {
+fun LoadingScreen(
+    com: ComponentActivity,
+    factory: Vasddf
+) {
     var startAnimation by remember { mutableStateOf(false) }
     var loadingProgress by remember { mutableFloatStateOf(0f) }
     BackHandler(enabled = true) {}
@@ -152,6 +160,20 @@ fun LoadingScreen(onLoadingComplete: () -> Unit) {
         animationSpec = tween(600, delayMillis = 500),
         label = "bottomAppear"
     )
+
+    LaunchedEffect(Unit) {
+        if (com.isFlowersConnected()) {
+            try {
+                masdf(com, factory)
+            } catch (e: Exception) {
+                navigate(ScreenMove.Move)
+                return@LaunchedEffect
+            }
+        } else {
+            delay(1500)
+            navigate(ScreenMove.NoConnection)
+        }
+    }
 
     Box(
         modifier = Modifier

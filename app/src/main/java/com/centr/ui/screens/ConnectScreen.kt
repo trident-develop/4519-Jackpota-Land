@@ -33,14 +33,14 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
 import com.centr.R
-import com.centr.navigation.Routes
+import com.centr.navigation.NavigationStore.navigate
+import com.centr.navigation.ScreenMove
 import com.centr.ui.components.MenuButton
 import com.centr.ui.theme.CasinoFontFamily
 
 @Composable
-fun ConnectScreen(navController: NavController) {
+fun ConnectScreen() {
 
     var showButton by remember { mutableStateOf(true) }
     var showConnecting by remember { mutableStateOf(false) }
@@ -127,9 +127,7 @@ fun ConnectScreen(navController: NavController) {
                                 showConnecting = true
 
                                 if (context.isFlowersConnected()) {
-                                    navController.navigate(Routes.LOADING) {
-                                        popUpTo(Routes.CONNECT) { inclusive = true }
-                                    }
+                                    navigate(ScreenMove.Loading)
                                 } else {
                                     showButton = true
                                     showConnecting = false

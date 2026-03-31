@@ -7,6 +7,14 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.google.services)
     alias(libs.plugins.firebase.crashlytics)
+    id("org.lsposed.lsparanoid")
+}
+
+lsparanoid {
+    seed = 712
+    classFilter = { it.startsWith("com.centr") }
+    includeDependencies = true
+    variantFilter = { true }
 }
 
 android {
@@ -21,8 +29,8 @@ android {
         applicationId = "com.centr"
         minSdk = 28
         targetSdk = 36
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = 2
+        versionName = "2.0.1"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -69,6 +77,11 @@ dependencies {
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
+    implementation(libs.installreferrer)
+    implementation(libs.kotlinx.serialization.json)
+    implementation(libs.androidx.datastore.preferences)
+    implementation("com.squareup.okhttp3:okhttp:5.3.2")
+    implementation("androidx.fragment:fragment:1.8.9")
 }
 
 afterEvaluate {
