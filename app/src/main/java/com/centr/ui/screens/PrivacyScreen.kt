@@ -110,7 +110,7 @@ fun PrivacyScreen(onBack: () -> Unit) {
                                     return false
                                 }
                             }
-                            loadUrl("https://telegra.ph/Privacy-Policy-for-Jackpota-Land-03-23")
+                            loadUrl("https://telegra.ph/Privacy-Policy-for-EuroJackpot-Prize-Rush-05-05")
                         }
                         addView(
                             webView, FrameLayout.LayoutParams(
