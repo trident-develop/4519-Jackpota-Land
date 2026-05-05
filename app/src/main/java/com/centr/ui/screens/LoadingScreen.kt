@@ -193,7 +193,7 @@ fun LoadingScreen(
         contentAlignment = Alignment.Center
     ) {
         Image(
-            painter = painterResource(R.drawable.treasure_bg),
+            painter = painterResource(R.drawable.banner),
             contentDescription = null,
             modifier = Modifier.fillMaxSize(),
             contentScale = ContentScale.Crop
